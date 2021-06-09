@@ -14,3 +14,19 @@ In short Id see if we could have a single list of currency types that can be sha
 
 1. I have created an infrastructure project and folders to represent entites and database classes if we need them. This is just by design and may or may not be needed depending on the scope of the MVP.
 In this scenario its not needed but I felt it was best to show what a typical project structure should look like.
+
+2. The request to the api can use both the enum integer and the enum name, e.g. 
+
+{
+  "price": 10.10,
+  "sourceCurrency": "GBP",
+  "targetCurrency": "USD"
+}
+
+3. An initial call to authenticate is required so you will need to retrieve the jwt token first.
+
+You can find the client token for authentication in appsettings.json under the key FakeClient.
+
+e.g. token?ClientToken=[FakeClientToken]
+
+Once you have the token just add it to the Rates/CalculateExchange endpoint as a Bearer Token.
